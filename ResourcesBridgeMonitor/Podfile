@@ -1,0 +1,13 @@
+platform :osx, '10.15'
+
+source 'https://cdn.cocoapods.org/'
+source 'https://github.com/prisma-ai/CocoaPodSpecs.git'
+
+install! 'cocoapods', :disable_input_output_paths => true
+
+use_frameworks!
+inhibit_all_warnings!
+
+target 'ResourcesBridgeMonitor' do
+  pod 'Bonjour', :path => '~/github/eugenebokhan/Bonjour'
+end
