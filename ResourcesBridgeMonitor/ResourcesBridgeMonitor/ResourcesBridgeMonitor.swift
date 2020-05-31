@@ -1,6 +1,15 @@
 import Foundation
 import Bonjour
 
+protocol ResourcesBridgeMonitorDelegate: AnyObject {
+    func didStartWritingResource(at path: String)
+    func didWriteResource(at path: String, progress: Double)
+    func didFinishWritingResource(at path: String)
+    func didStartSendingResource(at path: String)
+    func didSendResource(at path: String, progress: Double)
+    func didFinishSendingResource(at path: String)
+}
+
 final class ResourcesBridgeMonitor {
 
     enum Error: Swift.Error {
@@ -19,6 +28,7 @@ final class ResourcesBridgeMonitor {
 
     // MARK: - Properties
 
+    public weak var delegate: ResourcesBridgeMonitorDelegate?
     private let bonjour: BonjourSession
     private let encoder: JSONEncoder
     private let decoder: JSONDecoder
@@ -76,26 +86,28 @@ final class ResourcesBridgeMonitor {
 
     private func handleGetResourceRequest(resourcePath: String, from peer: Peer) {
         let resurceURL = URL(fileURLWithPath: resourcePath)
+        self.delegate?.didStartSendingResource(at: resourcePath)
         self.bonjour.sendResource(at: resurceURL,
                                   resourceName: resourcePath,
                                   to: peer,
                                   progressHandler: { progress in
+            self.delegate?.didSendResource(at: resourcePath, progress: progress)
             #if DEBUG
             print("""
                 Sending resource at path: \(resourcePath);
                 Progress: \(progress)
                 """)
             #endif
-        },
-                                  completionHandler: nil)
+        }) { _ in self.delegate?.didFinishSendingResource(at: resourcePath) }
     }
 
     private func handleWriteResourceRequest(resourcePath: String, from peer: Peer) {
         self.send(.response(.sendResource(resourcePath),
                             .success),
                   to: peer)
-
+        self.delegate?.didStartWritingResource(at: resourcePath)
         self.bonjour.onReceiving = { remotePath, peer, progress in
+            self.delegate?.didWriteResource(at: remotePath, progress: progress)
             #if DEBUG
             print("""
                 Getting resource at path: \(resourcePath);
@@ -129,6 +141,7 @@ final class ResourcesBridgeMonitor {
             }
             let resurceURL = URL(fileURLWithPath: resourcePath)
             try? data.write(to: resurceURL)
+            self.delegate?.didFinishWritingResource(at: remotePath)
         }
     }
 

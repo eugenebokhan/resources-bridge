@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0ACF5E5DE6D09C69AC7B6A15 /* Pods_ResourcesBridgeMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4621FBFC77AAA1BACE5F1C6 /* Pods_ResourcesBridgeMonitor.framework */; };
 		18CF5C1B248381CB00CB367F /* Communication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CF5C1A248381CB00CB367F /* Communication.swift */; };
+		18D17D8F2484204A00BCCA7E /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D17D8E2484204A00BCCA7E /* EventMonitor.swift */; };
+		18D17D9D24843CDB00BCCA7E /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D17D9B24843CDB00BCCA7E /* TableViewCell.swift */; };
+		18D17D9E24843CDB00BCCA7E /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D17D9C24843CDB00BCCA7E /* TableViewCell.xib */; };
 		18EBCE37248305B000E2D8DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EBCE36248305B000E2D8DB /* AppDelegate.swift */; };
 		18EBCE39248305B000E2D8DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EBCE38248305B000E2D8DB /* ViewController.swift */; };
 		18EBCE3B248305B100E2D8DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18EBCE3A248305B100E2D8DB /* Assets.xcassets */; };
@@ -18,6 +21,9 @@
 
 /* Begin PBXFileReference section */
 		18CF5C1A248381CB00CB367F /* Communication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Communication.swift; path = ../../Sources/Communication.swift; sourceTree = "<group>"; };
+		18D17D8E2484204A00BCCA7E /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
+		18D17D9B24843CDB00BCCA7E /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		18D17D9C24843CDB00BCCA7E /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		18EBCE33248305B000E2D8DB /* ResourcesBridgeMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResourcesBridgeMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18EBCE36248305B000E2D8DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18EBCE38248305B000E2D8DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +49,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18D17D942484348100BCCA7E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				18D17D9A24843CDB00BCCA7E /* TableViewCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		18D17D9A24843CDB00BCCA7E /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				18D17D9B24843CDB00BCCA7E /* TableViewCell.swift */,
+				18D17D9C24843CDB00BCCA7E /* TableViewCell.xib */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
 		18EBCE2A248305B000E2D8DB = {
 			isa = PBXGroup;
 			children = (
@@ -66,9 +89,11 @@
 			children = (
 				18EBCE36248305B000E2D8DB /* AppDelegate.swift */,
 				18EBCE38248305B000E2D8DB /* ViewController.swift */,
+				18D17D8E2484204A00BCCA7E /* EventMonitor.swift */,
 				18EBCE4A248308EB00E2D8DB /* ResourcesBridgeMonitor.swift */,
 				18CF5C1A248381CB00CB367F /* Communication.swift */,
 				18EBCE3A248305B100E2D8DB /* Assets.xcassets */,
+				18D17D942484348100BCCA7E /* Cells */,
 				18EBCE3C248305B100E2D8DB /* Main.storyboard */,
 				18EBCE3F248305B100E2D8DB /* Info.plist */,
 				18EBCE40248305B100E2D8DB /* ResourcesBridgeMonitor.entitlements */,
@@ -154,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18EBCE3B248305B100E2D8DB /* Assets.xcassets in Resources */,
+				18D17D9E24843CDB00BCCA7E /* TableViewCell.xib in Resources */,
 				18EBCE3E248305B100E2D8DB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,7 +232,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				18CF5C1B248381CB00CB367F /* Communication.swift in Sources */,
+				18D17D8F2484204A00BCCA7E /* EventMonitor.swift in Sources */,
 				18EBCE39248305B000E2D8DB /* ViewController.swift in Sources */,
+				18D17D9D24843CDB00BCCA7E /* TableViewCell.swift in Sources */,
 				18EBCE37248305B000E2D8DB /* AppDelegate.swift in Sources */,
 				18EBCE4B248308EB00E2D8DB /* ResourcesBridgeMonitor.swift in Sources */,
 			);

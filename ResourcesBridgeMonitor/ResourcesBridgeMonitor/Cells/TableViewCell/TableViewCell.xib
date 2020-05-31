@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="TableViewCell" id="c22-O7-iKe" userLabel="TableView Cell" customClass="TableViewCell" customModule="ResourcesBridgeMonitor" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="382" height="59"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0Qo-GQ-yaT">
+                    <rect key="frame" x="18" y="32" width="44" height="19"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="4M7-eP-Vd5">
+                        <font key="font" metaFont="system" size="16"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <progressIndicator hidden="YES" wantsLayer="YES" maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Xvw-VG-sgb">
+                    <rect key="frame" x="20" y="7" width="342" height="20"/>
+                </progressIndicator>
+                <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ccU-ex-J7n">
+                    <rect key="frame" x="126" y="-1" width="130" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="118" id="1Xl-rZ-d6W"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="Show in Finder" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eWD-bF-X0y">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showInFinder:" target="c22-O7-iKe" id="Syx-qw-vwA"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Xvw-VG-sgb" secondAttribute="bottom" constant="8" id="54z-mK-nFg"/>
+                <constraint firstItem="0Qo-GQ-yaT" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="8" id="8gf-hx-3A4"/>
+                <constraint firstItem="Xvw-VG-sgb" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="ACP-5K-524"/>
+                <constraint firstAttribute="trailing" secondItem="Xvw-VG-sgb" secondAttribute="trailing" constant="20" id="Cai-9U-geZ"/>
+                <constraint firstAttribute="bottom" secondItem="ccU-ex-J7n" secondAttribute="bottom" constant="6" id="IFy-S5-BdV"/>
+                <constraint firstItem="ccU-ex-J7n" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="IPT-kA-1J9"/>
+                <constraint firstItem="0Qo-GQ-yaT" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="dgj-v7-N0j"/>
+            </constraints>
+            <connections>
+                <outlet property="nameLabel" destination="0Qo-GQ-yaT" id="H47-YR-qCx"/>
+                <outlet property="progressIndicator" destination="Xvw-VG-sgb" id="cBp-wy-gVK"/>
+                <outlet property="showInFinder" destination="ccU-ex-J7n" id="14E-fv-uVO"/>
+            </connections>
+            <point key="canvasLocation" x="90" y="246.5"/>
+        </customView>
+    </objects>
+</document>
