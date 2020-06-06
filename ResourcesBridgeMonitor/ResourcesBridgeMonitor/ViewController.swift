@@ -2,21 +2,25 @@ import Cocoa
 
 class ViewController: NSViewController {
 
+    private struct PeerIDPathPair: Hashable, Equatable {
+        let peerID: String
+        let path: String
+    }
+
     @IBAction func quit(_ sender: NSButton) {
         NSApplication.shared.terminate(self)
     }
-
     @IBOutlet var tableView: NSTableView!
 
-    let monitor = try! ResourcesBridgeMonitor()
-    var resourcePaths: [String] = []
+    private let monitor = try! ResourcesBridgeMonitor()
+    private var statuses: [(pair: PeerIDPathPair, status: TableViewCell.Status)] = []
+    private var cells: [PeerIDPathPair: TableViewCell] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTableView()
         self.monitor.delegate = self
     }
-
 }
 
 extension ViewController: NSTableViewDelegate, NSTableViewDataSource {
@@ -24,84 +28,92 @@ extension ViewController: NSTableViewDelegate, NSTableViewDataSource {
     func setupTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.register(NSNib(nibNamed: "TableViewCell", bundle: .main),
+        self.tableView.register(NSNib(nibNamed: "TableViewCell",
+                                      bundle: .main),
                                 forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "TableViewCell"))
         self.tableView.reloadData()
     }
 
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return self.resourcePaths.count
+        return self.statuses.count
     }
 
-    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    func tableView(_ tableView: NSTableView,
+                   viewFor tableColumn: NSTableColumn?,
+                   row: Int) -> NSView? {
         let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "TableViewCell"),
                                       owner: self) as? TableViewCell
+        view?.setupAppearance()
+        let status = self.statuses.reversed()[row]
+        view?.status = status.status
+        self.cells[status.pair] = view
         return view
     }
 }
 
 extension ViewController: ResourcesBridgeMonitorDelegate {
-    func didStartWritingResource(at path: String) {
+
+    func didStartWritingResource(at path: String,
+                                 peerID: String) {
+        self.addNewStatus(pair: .init(peerID: peerID,
+                                      path: path),
+                          status: .receiving(path, .zero))
+    }
+
+    func didWriteResource(at path: String,
+                          progress: Double,
+                          peerID: String) {
+        self.updateStatus(pair: .init(peerID: peerID,
+                                      path: path),
+                          status: .receiving(path, progress))
+    }
+
+    func didFinishWritingResource(at path: String,
+                                  peerID: String) {
+        self.updateStatus(pair: .init(peerID: peerID,
+                                      path: path),
+                          status: .received(path))
+    }
+
+    func didStartSendingResource(at path: String,
+                                 peerID: String) {
+        self.addNewStatus(pair: .init(peerID: peerID,
+                                      path: path),
+                          status: .sending(path, .zero))
+    }
+
+    func didSendResource(at path: String,
+                         progress: Double,
+                         peerID: String) {
+        self.updateStatus(pair: .init(peerID: peerID,
+                                      path: path),
+                          status: .sending(path, progress))
+    }
+
+    func didFinishSendingResource(at path: String,
+                                  peerID: String) {
+        self.updateStatus(pair: .init(peerID: peerID,
+                                      path: path),
+                          status: .sent(path))
+    }
+
+    private func addNewStatus(pair: PeerIDPathPair,
+                              status: TableViewCell.Status) {
         DispatchQueue.main.async {
-            self.resourcePaths.append(path)
+            self.statuses.append((pair, status))
             self.tableView.reloadData()
-            guard let cell = self.tableView.view(atColumn: 0,
-                                                 row: self.resourcePaths.count - 1,
-                                                 makeIfNecessary: true) as? TableViewCell
-            else { return }
-            cell.status = .receiving(path, 0)
         }
     }
 
-    func didWriteResource(at path: String, progress: Double) {
+    private func updateStatus(pair: PeerIDPathPair,
+                              status: TableViewCell.Status) {
         DispatchQueue.main.async {
-            guard let cell = self.tableView.view(atColumn: 0,
-                                                 row: self.resourcePaths.count - 1,
-                                                 makeIfNecessary: true) as? TableViewCell
+            guard let index = self.statuses.enumerated().first(where: {
+                $0.element.pair == pair
+            })?.offset
             else { return }
-            cell.status = .receiving(path, progress)
-        }
-    }
-
-    func didFinishWritingResource(at path: String) {
-        DispatchQueue.main.async {
-            guard let cell = self.tableView.view(atColumn: 0,
-                                                 row: self.resourcePaths.count - 1,
-                                                 makeIfNecessary: true) as? TableViewCell
-            else { return }
-            cell.status = .received(path)
-        }
-    }
-
-    func didStartSendingResource(at path: String) {
-        DispatchQueue.main.async {
-            self.resourcePaths.append(path)
-            self.tableView.reloadData()
-            guard let cell = self.tableView.view(atColumn: 0,
-                                                 row: self.resourcePaths.count - 1,
-                                                 makeIfNecessary: true) as? TableViewCell
-            else { return }
-            cell.status = .sending(path, 0)
-        }
-    }
-
-    func didSendResource(at path: String, progress: Double) {
-        DispatchQueue.main.async {
-            guard let cell = self.tableView.view(atColumn: 0,
-                                                 row: self.resourcePaths.count - 1,
-                                                 makeIfNecessary: true) as? TableViewCell
-            else { return }
-            cell.status = .sending(path, progress)
-        }
-    }
-
-    func didFinishSendingResource(at path: String) {
-        DispatchQueue.main.async {
-            guard let cell = self.tableView.view(atColumn: 0,
-                                                 row: self.resourcePaths.count - 1,
-                                                 makeIfNecessary: true) as? TableViewCell
-            else { return }
-            cell.status = .sent(path)
+            self.statuses[index].status = status
+            self.cells[pair]?.status = status
         }
     }
 }

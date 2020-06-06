@@ -9,5 +9,5 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'ResourcesBridgeMonitor' do
-  pod 'Bonjour', :path => '~/github/eugenebokhan/Bonjour'
+  pod 'Bonjour', '~> 2.0.0'
 end

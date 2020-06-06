@@ -20,5 +20,5 @@ Pod::Spec.new do |s|
 
   s.swift_version = "5.2"
 
-  s.dependency "Bonjour"
+  s.dependency "Bonjour", "~> 2.0.0"
 end

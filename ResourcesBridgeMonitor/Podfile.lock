@@ -1,16 +1,16 @@
 PODS:
-  - Bonjour (1.0.0)
+  - Bonjour (2.0.0)
 
 DEPENDENCIES:
-  - Bonjour (from `~/github/eugenebokhan/Bonjour`)
+  - Bonjour (~> 2.0.0)
 
-EXTERNAL SOURCES:
-  Bonjour:
-    :path: "~/github/eugenebokhan/Bonjour"
+SPEC REPOS:
+  trunk:
+    - Bonjour
 
 SPEC CHECKSUMS:
-  Bonjour: b29fd7efdb661840f0b18c08d95b1105ad70d953
+  Bonjour: a52029bab80a09db135341bfbfbd174856081d0a
 
-PODFILE CHECKSUM: 64d2a8f656971c61ecb907be7e0b5a9146402a7a
+PODFILE CHECKSUM: 0ba212a4d74c9379f54b901152ffbc96306832f1
 
-COCOAPODS: 1.9.2
+COCOAPODS: 1.9.3

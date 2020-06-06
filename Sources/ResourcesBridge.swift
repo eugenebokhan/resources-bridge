@@ -46,11 +46,14 @@ final public class ResourcesBridge {
     }
 
 
-    public func whaitForConnection(checkInterval: TimeInterval = 0.5) {
+    public func waitForConnection(checkInterval: TimeInterval = 3) {
         while !self.isConnected {
-            RunLoop.main.run(until: Date().addingTimeInterval(checkInterval))
+            self.abortConnection()
+            RunLoop.main.run(until: Date().addingTimeInterval(checkInterval / 3))
+            self.tryToConnect()
+            RunLoop.main.run(until: Date().addingTimeInterval(checkInterval * 2 / 3))
             #if DEBUG
-            print("Wait for connectoin to monitor")
+            print("Waiting for connection to monitor")
             #endif
         }
     }
@@ -93,7 +96,9 @@ final public class ResourcesBridge {
         try self.send(request: .getResource(remotePath))
 
         self.bonjour.onStartReceiving = { remotePath, peer in
+            #if DEBUG
             print("Start receiving: \(remotePath)")
+            #endif
         }
 
         self.bonjour.onReceiving = { remotePath, peer, progress in
@@ -140,7 +145,9 @@ final public class ResourcesBridge {
         try self.check(response, to: request, from: responcePeer)
     }
 
-    private func check(_ response: Response, to request: Request, from peer: Peer) throws {
+    private func check(_ response: Response,
+                       to request: Request,
+                       from peer: Peer) throws {
         guard let monitorPeer = self.monitorPeer,
               peer == monitorPeer
         else { throw Error.nonMonitorResponse }
@@ -149,7 +156,7 @@ final public class ResourcesBridge {
             guard requestOfResponse == request
             else { throw Error.nonRequestResponse }
             switch status {
-            case .success: break
+            case .success: return
             case let .error(error): throw Error.responseError(error)
             }
         case let .unknownError(error):

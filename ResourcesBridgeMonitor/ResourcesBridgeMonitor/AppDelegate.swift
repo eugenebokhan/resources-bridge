@@ -12,6 +12,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.image = #imageLiteral(resourceName: "StatusBarButtonImage")
             button.action = #selector(self.togglePopover(_:))
         }
+        self.popover.animates = false
         self.popover.contentViewController = ViewController.newInstance()
 
         self.eventMonitor = .init(mask: [.leftMouseDown, .rightMouseDown]) { event in
