@@ -3,10 +3,10 @@ import Cocoa
 class TableViewCell: NSTableCellView {
 
     enum Status {
-        case receiving(String, Double)
-        case received(String)
-        case sending(String, Double)
-        case sent(String)
+        case receiving(String, Double, Date)
+        case received(String, Date)
+        case sending(String, Double, Date)
+        case sent(String, Date)
         case none
     }
 
@@ -32,20 +32,23 @@ class TableViewCell: NSTableCellView {
     var status: Status = .none {
         didSet {
             DispatchQueue.main.async {
-                self.updateTimeLablel()
                 switch self.status {
-                case let .receiving(resourceFilePath, progress):
+                case let .receiving(resourceFilePath, progress, time):
                     self.show(.progress(progress))
                     self.nameLabel.stringValue = "Receiving \(resourceFilePath.fileName)"
-                case let .received(resourceFilePath):
+                    self.updateTimeLabel(time: time)
+                case let .received(resourceFilePath, time):
                     self.nameLabel.stringValue = "Received \(resourceFilePath.fileName)"
                     self.show(.button(resourceFilePath))
-                case let .sending(resourceFilePath, progress):
+                    self.updateTimeLabel(time: time)
+                case let .sending(resourceFilePath, progress, time):
                     self.show(.progress(progress))
                     self.nameLabel.stringValue = "Sending \(resourceFilePath.fileName)"
-                case let .sent(resourceFilePath):
+                    self.updateTimeLabel(time: time)
+                case let .sent(resourceFilePath, time):
                     self.nameLabel.stringValue = "Sent \(resourceFilePath.fileName)"
                     self.show(.button(resourceFilePath))
+                    self.updateTimeLabel(time: time)
                 case .none:
                     self.nameLabel.stringValue = ""
                     self.show(.progress(0))
@@ -80,9 +83,7 @@ class TableViewCell: NSTableCellView {
         }
     }
 
-    private func updateTimeLablel() {
-        let now = Date()
-
+    private func updateTimeLabel(time: Date) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.doesRelativeDateFormatting = true
@@ -90,7 +91,7 @@ class TableViewCell: NSTableCellView {
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "h:mm a"
 
-        let time = "\(dateFormatter.string(from: now)), \(timeFormatter.string(from: now))"
+        let time = "\(dateFormatter.string(from: time)), \(timeFormatter.string(from: time))"
         self.timaLabel.stringValue = time
     }
 }

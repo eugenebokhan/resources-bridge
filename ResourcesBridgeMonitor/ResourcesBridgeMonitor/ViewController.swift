@@ -57,7 +57,7 @@ extension ViewController: ResourcesBridgeMonitorDelegate {
                                  peerID: String) {
         self.addNewStatus(pair: .init(peerID: peerID,
                                       path: path),
-                          status: .receiving(path, .zero))
+                          status: .receiving(path, .zero, .init()))
     }
 
     func didWriteResource(at path: String,
@@ -65,21 +65,21 @@ extension ViewController: ResourcesBridgeMonitorDelegate {
                           peerID: String) {
         self.updateStatus(pair: .init(peerID: peerID,
                                       path: path),
-                          status: .receiving(path, progress))
+                          status: .receiving(path, progress, .init()))
     }
 
     func didFinishWritingResource(at path: String,
                                   peerID: String) {
         self.updateStatus(pair: .init(peerID: peerID,
                                       path: path),
-                          status: .received(path))
+                          status: .received(path, .init()))
     }
 
     func didStartSendingResource(at path: String,
                                  peerID: String) {
         self.addNewStatus(pair: .init(peerID: peerID,
                                       path: path),
-                          status: .sending(path, .zero))
+                          status: .sending(path, .zero, .init()))
     }
 
     func didSendResource(at path: String,
@@ -87,14 +87,14 @@ extension ViewController: ResourcesBridgeMonitorDelegate {
                          peerID: String) {
         self.updateStatus(pair: .init(peerID: peerID,
                                       path: path),
-                          status: .sending(path, progress))
+                          status: .sending(path, progress, .init()))
     }
 
     func didFinishSendingResource(at path: String,
                                   peerID: String) {
         self.updateStatus(pair: .init(peerID: peerID,
                                       path: path),
-                          status: .sent(path))
+                          status: .sent(path, .init()))
     }
 
     private func addNewStatus(pair: PeerIDPathPair,
