@@ -90,3 +90,5 @@ fastlane/test_output
 iOSInjectionProject/
 *.DS_Store
 ResourcesBridgeMonitor/Pods
+.swiftpm
+Package.resolved
