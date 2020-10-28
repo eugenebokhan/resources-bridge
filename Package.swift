@@ -18,10 +18,6 @@ let package = Package(
     ],
     targets: [
         .target(name: "ResourcesBridge",
-                dependencies: ["Bonjour"],
-                linkerSettings: [
-                    .linkedFramework("MultipeerConnectivity"),
-                    .linkedFramework("CommonCrypto")
-                ])
+                dependencies: ["Bonjour"])
     ]
 )
