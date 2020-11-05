@@ -11,10 +11,11 @@ Read and write your Mac's files in a sync manner like they are on your iPhone.
 * iOS `11.0`
 * macOS `10.13`
 
-## Install via [`Cocoapods`](https://cocoapods.org)
+## Install via [SwiftPM](https://swift.org/package-manager/)
 
-```ruby
-pod 'ResourcesBridge'
+```swift
+.package(url: "https://github.com/eugenebokhan/ResourcesBridge.git",
+         .upToNextMinor(from: "0.0.4"))
 ```
 
 ## How To Use
@@ -48,15 +49,15 @@ After the `Monitor` app is launched, you may call one of the following functions
 * Wait for connection synchronously
 
   ```Swift
-  bridge.waitForConnection(checkInterval: TimeInterval = 3)
+  try bridge.waitForConnection()
   ```
 
 * Write resource on Mac
 
   ```Swift
-  bridge.writeResourceSynchronously(resource: Data,
-                                    at remotePath: String,
-                                    progressHandler: ((Double) -> Void)? = nil) throws
+  bridge.writeResource(_ resource: Data,
+                       at remotePath: String,
+                       progressHandler: ((Double) -> Void)? = nil) throws
   ```
 
   * `progressHandler`: `read` / `write` functions are designed to be synchronous, but you may pass a progress handler that will report progress on other dispatch queue for debug purposes.
@@ -67,8 +68,8 @@ After the `Monitor` app is launched, you may call one of the following functions
   The logic is similar to the `write` func.
 
   ```Swift
-  bridge.readResourceSynchronously(at remotePath: String,
-                                   progressHandler: ((Double) -> Void)? = nil) throws -> Data
+  bridge.readResource(at remotePath: String,
+                      progressHandler: ((Double) -> Void)? = nil) throws -> Data
   ```
 
 # Dependencies
