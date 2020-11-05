@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0ACF5E5DE6D09C69AC7B6A15 /* Pods_ResourcesBridgeMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4621FBFC77AAA1BACE5F1C6 /* Pods_ResourcesBridgeMonitor.framework */; };
 		18CF5C1B248381CB00CB367F /* Communication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CF5C1A248381CB00CB367F /* Communication.swift */; };
 		18D17D8F2484204A00BCCA7E /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D17D8E2484204A00BCCA7E /* EventMonitor.swift */; };
 		18D17D9D24843CDB00BCCA7E /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D17D9B24843CDB00BCCA7E /* TableViewCell.swift */; };
@@ -17,10 +16,11 @@
 		18EBCE3B248305B100E2D8DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18EBCE3A248305B100E2D8DB /* Assets.xcassets */; };
 		18EBCE3E248305B100E2D8DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EBCE3C248305B100E2D8DB /* Main.storyboard */; };
 		18EBCE4B248308EB00E2D8DB /* ResourcesBridgeMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EBCE4A248308EB00E2D8DB /* ResourcesBridgeMonitor.swift */; };
+		18F07C6F25541E0400556A7E /* ResourcesBridge in Frameworks */ = {isa = PBXBuildFile; productRef = 18F07C6E25541E0400556A7E /* ResourcesBridge */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		18CF5C1A248381CB00CB367F /* Communication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Communication.swift; path = ../../Sources/Communication.swift; sourceTree = "<group>"; };
+		18CF5C1A248381CB00CB367F /* Communication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Communication.swift; path = ../../Sources/ResourcesBridge/Communication.swift; sourceTree = "<group>"; };
 		18D17D8E2484204A00BCCA7E /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		18D17D9B24843CDB00BCCA7E /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		18D17D9C24843CDB00BCCA7E /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
@@ -32,9 +32,6 @@
 		18EBCE3F248305B100E2D8DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18EBCE40248305B100E2D8DB /* ResourcesBridgeMonitor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ResourcesBridgeMonitor.entitlements; sourceTree = "<group>"; };
 		18EBCE4A248308EB00E2D8DB /* ResourcesBridgeMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesBridgeMonitor.swift; sourceTree = "<group>"; };
-		1AE4600A16ED64877CE499B6 /* Pods-ResourcesBridgeMonitor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResourcesBridgeMonitor.debug.xcconfig"; path = "Target Support Files/Pods-ResourcesBridgeMonitor/Pods-ResourcesBridgeMonitor.debug.xcconfig"; sourceTree = "<group>"; };
-		A3684BF1F17C699BD644F990 /* Pods-ResourcesBridgeMonitor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResourcesBridgeMonitor.release.xcconfig"; path = "Target Support Files/Pods-ResourcesBridgeMonitor/Pods-ResourcesBridgeMonitor.release.xcconfig"; sourceTree = "<group>"; };
-		D4621FBFC77AAA1BACE5F1C6 /* Pods_ResourcesBridgeMonitor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ResourcesBridgeMonitor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,7 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0ACF5E5DE6D09C69AC7B6A15 /* Pods_ResourcesBridgeMonitor.framework in Frameworks */,
+				18F07C6F25541E0400556A7E /* ResourcesBridge in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,8 +68,6 @@
 			children = (
 				18EBCE35248305B000E2D8DB /* ResourcesBridgeMonitor */,
 				18EBCE34248305B000E2D8DB /* Products */,
-				4C9C9B92973059A3EE0E7518 /* Pods */,
-				6065AAE11524C953A8231ECE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,23 +96,6 @@
 			path = ResourcesBridgeMonitor;
 			sourceTree = "<group>";
 		};
-		4C9C9B92973059A3EE0E7518 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				1AE4600A16ED64877CE499B6 /* Pods-ResourcesBridgeMonitor.debug.xcconfig */,
-				A3684BF1F17C699BD644F990 /* Pods-ResourcesBridgeMonitor.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		6065AAE11524C953A8231ECE /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D4621FBFC77AAA1BACE5F1C6 /* Pods_ResourcesBridgeMonitor.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -125,17 +103,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18EBCE43248305B100E2D8DB /* Build configuration list for PBXNativeTarget "ResourcesBridgeMonitor" */;
 			buildPhases = (
-				592F8D5E463B558F8606D6BC /* [CP] Check Pods Manifest.lock */,
 				18EBCE2F248305B000E2D8DB /* Sources */,
 				18EBCE30248305B000E2D8DB /* Frameworks */,
 				18EBCE31248305B000E2D8DB /* Resources */,
-				0C44C30AC98F7F6D7FF10490 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = ResourcesBridgeMonitor;
+			packageProductDependencies = (
+				18F07C6E25541E0400556A7E /* ResourcesBridge */,
+			);
 			productName = ResourcesBridgeMonitor;
 			productReference = 18EBCE33248305B000E2D8DB /* ResourcesBridgeMonitor.app */;
 			productType = "com.apple.product-type.application";
@@ -147,7 +126,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = "Eugene Bokhan";
 				TargetAttributes = {
 					18EBCE32248305B000E2D8DB = {
@@ -185,46 +164,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		0C44C30AC98F7F6D7FF10490 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ResourcesBridgeMonitor/Pods-ResourcesBridgeMonitor-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		592F8D5E463B558F8606D6BC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ResourcesBridgeMonitor-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		18EBCE2F248305B000E2D8DB /* Sources */ = {
@@ -280,6 +219,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -340,6 +280,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -369,7 +310,6 @@
 		};
 		18EBCE44248305B100E2D8DB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AE4600A16ED64877CE499B6 /* Pods-ResourcesBridgeMonitor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ResourcesBridgeMonitor/ResourcesBridgeMonitor.entitlements;
@@ -392,7 +332,6 @@
 		};
 		18EBCE45248305B100E2D8DB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3684BF1F17C699BD644F990 /* Pods-ResourcesBridgeMonitor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ResourcesBridgeMonitor/ResourcesBridgeMonitor.entitlements;
@@ -435,6 +374,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		18F07C6E25541E0400556A7E /* ResourcesBridge */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ResourcesBridge;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 18EBCE2B248305B000E2D8DB /* Project object */;
 }

@@ -14,7 +14,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/eugenebokhan/Bonjour.git",
-                 from: "2.0.1")
+                 from: "2.1.0")
     ],
     targets: [
         .target(name: "ResourcesBridge",

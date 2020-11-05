@@ -118,7 +118,7 @@ extension ViewController: ResourcesBridgeMonitorDelegate {
     }
 }
 
-    extension ViewController {
+extension ViewController {
     static func newInstance() -> ViewController {
         return NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "ViewController") as! ViewController
     }

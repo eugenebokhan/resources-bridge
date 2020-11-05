@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "ResourcesBridge"
-  s.version = "0.0.3"
+  s.version = "0.0.4"
 
   s.summary = "ResourcesBridge"
   s.homepage = "https://github.com/eugenebokhan/ResourcesBridge"
@@ -20,5 +20,5 @@ Pod::Spec.new do |s|
 
   s.swift_version = "5.2"
 
-  s.dependency "Bonjour", "~> 2.0.1"
+  s.dependency "Bonjour", "~> 2.1.0"
 end

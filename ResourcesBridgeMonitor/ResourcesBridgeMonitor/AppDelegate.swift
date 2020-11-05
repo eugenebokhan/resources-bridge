@@ -40,18 +40,4 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.popover.performClose(sender)
         self.eventMonitor?.stop()
     }
-
-//    func constructMenu() {
-//        let menu = NSMenu()
-//
-//        menu.addItem(NSMenuItem(title: "Print Quote", action: #selector(AppDelegate.printQuote(_:)), keyEquivalent: "P"))
-//        menu.addItem(NSMenuItem.separator())
-//        menu.addItem(NSMenuItem(title: "Quit Quotes", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
-//
-//        statusItem.menu = menu
-//    }
-}
-
-extension ViewController {
-    
 }

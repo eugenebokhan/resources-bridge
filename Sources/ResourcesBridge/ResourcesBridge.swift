@@ -26,10 +26,10 @@ final public class ResourcesBridge {
 
     // MARK: - Init
 
-    public init() throws {
+    public init(peerName: String = "iPhone") throws {
         self.storage = .init()
         self.bonjour = .init(configuration: .init(serviceType: "ResourcesBridge",
-                                                  peerName: "iPhone",
+                                                  peerName: peerName,
                                                   defaults: .standard,
                                                   security: .default,
                                                   invitation: .automatic))
@@ -46,21 +46,24 @@ final public class ResourcesBridge {
     }
 
 
-    public func waitForConnection(checkInterval: TimeInterval = 3) {
-        while !self.isConnected {
+    public func waitForConnection(checkInterval: TimeInterval = 3,
+                                  duration: TimeInterval = 20) throws {
+        let trialEndDate = Date().addingTimeInterval(duration)
+        while !self.isConnected && Date() < trialEndDate {
             self.abortConnection()
-            RunLoop.main.run(until: Date().addingTimeInterval(checkInterval / 3))
             self.tryToConnect()
-            RunLoop.main.run(until: Date().addingTimeInterval(checkInterval * 2 / 3))
+            RunLoop.current.run(until: Date().addingTimeInterval(checkInterval))
             #if DEBUG
             print("Waiting for connection to monitor")
             #endif
         }
+        guard self.isConnected
+        else { throw Error.monitorDisconnected }
     }
-
-    public func writeResourceSynchronously(resource: Data,
-                                           at remotePath: String,
-                                           progressHandler: ((Double) -> Void)? = nil) throws {
+    
+    public func writeResource(_ resource: Data,
+                              at remotePath: String,
+                              progressHandler: ((Double) -> Void)? = nil) throws {
         defer { self.storage.cleanup() }
         try self.sendRequestAndCheckResponse(request: .sendResource(remotePath))
 
@@ -83,9 +86,9 @@ final public class ResourcesBridge {
             throw sendingError
         }
     }
-
-    public func readResourceSynchronously(at remotePath: String,
-                                          progressHandler: ((Double) -> Void)? = nil) throws -> Data {
+    
+    public func readResource(from remotePath: String,
+                             progressHandler: ((Double) -> Void)? = nil) throws -> Data {
         defer {
             self.bonjour.onReceiving = nil
             self.bonjour.onFinishReceiving = nil
