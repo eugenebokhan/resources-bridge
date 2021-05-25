@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18B9635A265D329600669509 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 18B96359265D329600669509 /* AppIcon.icns */; };
 		18CF5C1B248381CB00CB367F /* Communication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CF5C1A248381CB00CB367F /* Communication.swift */; };
 		18D17D8F2484204A00BCCA7E /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D17D8E2484204A00BCCA7E /* EventMonitor.swift */; };
 		18D17D9D24843CDB00BCCA7E /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D17D9B24843CDB00BCCA7E /* TableViewCell.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18B96359265D329600669509 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
 		18CF5C1A248381CB00CB367F /* Communication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Communication.swift; path = ../../Sources/ResourcesBridge/Communication.swift; sourceTree = "<group>"; };
 		18D17D8E2484204A00BCCA7E /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		18D17D9B24843CDB00BCCA7E /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				18D17D8E2484204A00BCCA7E /* EventMonitor.swift */,
 				18EBCE4A248308EB00E2D8DB /* ResourcesBridgeMonitor.swift */,
 				18CF5C1A248381CB00CB367F /* Communication.swift */,
+				18B96359265D329600669509 /* AppIcon.icns */,
 				18EBCE3A248305B100E2D8DB /* Assets.xcassets */,
 				18D17D942484348100BCCA7E /* Cells */,
 				18EBCE3C248305B100E2D8DB /* Main.storyboard */,
@@ -158,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18EBCE3B248305B100E2D8DB /* Assets.xcassets in Resources */,
+				18B9635A265D329600669509 /* AppIcon.icns in Resources */,
 				18D17D9E24843CDB00BCCA7E /* TableViewCell.xib in Resources */,
 				18EBCE3E248305B100E2D8DB /* Main.storyboard in Resources */,
 			);
@@ -311,12 +315,11 @@
 		18EBCE44248305B100E2D8DB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ResourcesBridgeMonitor/ResourcesBridgeMonitor.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 63TG84TE66;
+				DEVELOPMENT_TEAM = U59P58LC6V;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ResourcesBridgeMonitor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -333,12 +336,11 @@
 		18EBCE45248305B100E2D8DB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ResourcesBridgeMonitor/ResourcesBridgeMonitor.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 63TG84TE66;
+				DEVELOPMENT_TEAM = U59P58LC6V;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ResourcesBridgeMonitor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
